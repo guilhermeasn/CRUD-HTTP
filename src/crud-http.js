@@ -1,13 +1,7 @@
 import axios from 'axios';
 
 
-export function CRUD_HTTP({
-
-    base_url = 'http://',
-    add_headers = {},
-    axios_config = {}
-    
-}) {
+export function CRUD_HTTP(base_url = '', add_headers = {}, axios_config = {}) {
 
     const http = axios.create({
         baseURL: base_url,
