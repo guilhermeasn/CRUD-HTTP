@@ -1,4 +1,4 @@
-import { CRUD_HTTP } from "./crud-http";
+import { CRUD_HTTP } from "./crud-http.js";
 
 
 const presets = {
