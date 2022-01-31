@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 
-export const initialize = ({
+export function CRUD_HTTP({
 
     base_url = 'http://',
     add_headers = {},
     axios_config = {}
     
-}) => {
+}) {
 
     const http = axios.create({
         baseURL: base_url,
@@ -102,5 +102,3 @@ export const initialize = ({
     return CRUD;
 
 }
-
-export default initialize();
