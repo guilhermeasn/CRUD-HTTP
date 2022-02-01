@@ -10,18 +10,18 @@ const presets = {
 };
 
 
-export const initialize = ({
+export const initialize = ( configs = {} ) =>  {
 
-    base_url,
-    add_headers,
-    axios_config
+    const params = { ...presets, ...configs };
 
-} = presets) => CRUD_HTTP(
+    return CRUD_HTTP(
 
-    base_url,
-    add_headers,
-    axios_config
-
-);
+        params.base_url,
+        params.add_headers,
+        params.axios_config
+    
+    );
+    
+};
 
 export default initialize(presets);

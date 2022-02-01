@@ -1,6 +1,6 @@
 {
   "name": "crud-http",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Package to make requests to an API via HTTP with the CRUD paradigm (create, read, update, delete). Generating a clean and organized source code.",
   "main": "src/index.js",
   "scripts": {
