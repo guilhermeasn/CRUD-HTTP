@@ -70,7 +70,6 @@ export const CRUD = initialize({
  ### Chaves da configuração:
  
   - **base_url**: o url inicial do caminho para a api, por exemplo: ```'https://api.service.com/v1'```.
-  - **reuse_instance**: utilizamos uma instância do pacote ```axios```, aqui você determina se ela é reaproveitada (```true```) ou se ela é reiniciada a cada uso (```false```), configure ```false``` quando precisar que um dado no header precise ser atualizado com frequência por exemplo.
   - **add_headers**: dados a serem adicionados ao header de cada requisição.
   - **axios_config**: é usada uma instância do pacote ```axios```, aqui você pode adicionar ou alterar as configurações da instância de ```axios```. Veja as possíveis configurações em [Axios Request Config](https://axios-http.com/docs/req_config).
 
