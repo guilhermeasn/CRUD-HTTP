@@ -44,7 +44,7 @@ export function CRUD_HTTP(config) {
     
             if(typeof reject.response !== 'undefined') result.response = reject.response;
             else {
-                result.error  = (typeof reject === 'string') ? reject : 'A network error has occurred';
+                if(typeof reject === 'string') result.error = reject;
                 result.response = reject;
             }
     
