@@ -1,18 +1,11 @@
 import axios from 'axios';
 
 
-export function CRUD_HTTP(base_url = 'http://', add_headers = {}, axios_config = {}) {
+export function CRUD_HTTP(config) {
 
-    const http = axios.create({
-        baseURL: base_url,
-        headers: {
-            Accept: 'application/json',
-            ...add_headers
-        },
-        ...axios_config
-    });
+    const http = axios.create(config);
 
-    const CRUD = async (mode, path = [], input = {}) => {
+    const CRUD = async (action, path = [], input = {}) => {
 
         const location = path.join('/');
         const params   = input => input ? '?' + new URLSearchParams(input).toString() : '';
@@ -21,6 +14,7 @@ export function CRUD_HTTP(base_url = 'http://', add_headers = {}, axios_config =
             response: {},
             success:  null,
             message:  '',
+            error:    '',
             dataset:  [],
             data:     {},
             errors:   {}
@@ -28,7 +22,7 @@ export function CRUD_HTTP(base_url = 'http://', add_headers = {}, axios_config =
     
         try {
     
-            switch(mode) {
+            switch(action) {
     
                 case 'CREATE': case 'post':    result.response = await http.post(location, input);             break;
                 case 'READ':   case 'get':     result.response = await http.get(location + params(input));     break;
@@ -38,9 +32,9 @@ export function CRUD_HTTP(base_url = 'http://', add_headers = {}, axios_config =
                                case 'head':    result.response = await http.head(location + params(input));    break;
                                case 'options': result.response = await http.options(location + params(input)); break;
         
-                default: console.error('The CRUD function only accepts the modes: CREATE, READ, UPDATE, DELETE, post, get, put, path, delete, head or options');
+                default: console.error('The CRUD function only accepts actions: CREATE, READ, UPDATE, DELETE, post, get, put, path, delete, head or options');
                 
-                throw new Error('Ocorreu um erro inesperado!');
+                throw new Error('An unexpected error occurred');
         
             }
     
@@ -50,7 +44,7 @@ export function CRUD_HTTP(base_url = 'http://', add_headers = {}, axios_config =
     
             if(typeof reject.response !== 'undefined') result.response = reject.response;
             else {
-                result.message  = (typeof reject === 'string') ? reject : 'Ocorreu um erro desconhecido!';
+                result.error  = (typeof reject === 'string') ? reject : 'A network error has occurred';
                 result.response = reject;
             }
     
@@ -67,6 +61,7 @@ export function CRUD_HTTP(base_url = 'http://', add_headers = {}, axios_config =
             else if(typeof result.response.data === 'object') {
     
                 if(typeof result.response.data.message === 'string') result.message = result.response.data.message;
+                if(typeof result.response.data.error   === 'string') result.error   = result.response.data.error;
                 if(typeof result.response.data.errors  === 'object') result.errors  = result.response.data.errors;
                 if(Array.isArray(result.response.data.dataset))      result.dataset = result.response.data.dataset;
     
@@ -75,6 +70,7 @@ export function CRUD_HTTP(base_url = 'http://', add_headers = {}, axios_config =
                     if(
                         (key !== 'dataset' || !Array.isArray(result.response.data[key]))     &&
                         (key !== 'message' || typeof result.response.data[key] !== 'string') &&
+                        (key !== 'error'   || typeof result.response.data[key] !== 'string') &&
                         (key !== 'errors'  || typeof result.response.data[key] !== 'object')
                     ) {
                         result.data = {
