@@ -1,8 +1,8 @@
 # CRUD-HTTP
 
-Pacote (JavaScript node frontend) para fazer requisições a uma API via HTTP com o paradigma CRUD (create, read, update, delete). Gerando um código fonte limpo e organizado. Ele retorna dados concisos e padronizados, tem uma variavel de controle de sucesso não exigindo o uso de try...catch... assim tornando o seu código de requisições http mais enxuto e fácil de ler.
-
 *Package (JavaScript node frontend) to make requests to an API via HTTP with the CRUD paradigm (create, read, update, delete). Generating a clean and organized source code. It returns concise and standardized data, has a success control variable not requiring the use of try...catch... thus making your http request code leaner and easier to read.*
+
+Pacote (JavaScript node frontend) para fazer requisições a uma API via HTTP com o paradigma CRUD (create, read, update, delete). Gerando um código fonte limpo e organizado. Ele retorna dados concisos e padronizados, tem uma variavel de controle de sucesso não exigindo o uso de try...catch... assim tornando o seu código de requisições http mais enxuto e fácil de ler.
 
 ## 🔍 Exemplos de Uso
 
