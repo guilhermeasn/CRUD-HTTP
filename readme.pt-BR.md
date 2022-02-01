@@ -62,7 +62,7 @@ import { initialize } from 'crud-http';
 
 export const CRUD = initialize({
 
-    baseURL: process.env.REACT_APP_SERVER,
+    baseURL: 'http://your_api_serve.com',
     headers: {
         Accept: 'application/json',
     }
@@ -86,12 +86,13 @@ import CRUD from 'crud-http';
 ### Parâmetros de CRUD
 
 ```
-CRUD( action: string, path: Array<string|numeric>, data: object ): Promise<object>
+CRUD( action: string, path: Array<string|numeric>, data: object, config: object ): Promise<object>
 ```
 
  - **action**: uma *string* com um verbo http (```'get'```, ```'post'```, ```'put'```, ```'path'```, ```'delete'```, ```'head'``` ou ```'options'```) ou com um alias (```'CREATE'``` alias de *post*, ```'READ'``` alias de *get*, ```'UPDATE'``` alias de *put*, ```'DELETE'``` alias de *delete*), esse dado é *case sensitive*.
  - **path**: um *array* com o restante do caminho da *api*, por exemplo ```[ 'user', 3, 'comment', 1 ]```.
  - **data**: um *object* com os dados a serem transmitidas para a *api* durante a requisição.
+ - **config**: um *object* com configurações. Veja as configurações possíveis em [Axios Request Config](https://axios-http.com/docs/req_config).
 
 ### Retorno de CRUD
 

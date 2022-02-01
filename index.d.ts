@@ -16,9 +16,10 @@ export interface CrudHttpResult {
 declare function CRUD(
     action: string,
     path:   Array<string | number>,
-    data:   object
+    data:   object,
+    config: AxiosRequestConfig<object>
 ) : Promise<CrudHttpResult>;
 
 export default CRUD;
 
-export function initialize(config?: AxiosRequestConfig) : typeof CRUD;
+export function initialize(config?: AxiosRequestConfig<object>) : typeof CRUD;

@@ -5,7 +5,7 @@ export function CRUD_HTTP(config) {
 
     const http = axios.create(config);
 
-    const CRUD = async (action, path = [], input = {}) => {
+    const CRUD = async (action, path = [], input = {}, config = {}) => {
 
         const location = path.join('/');
         const params   = input => input ? '?' + new URLSearchParams(input).toString() : '';
@@ -24,13 +24,13 @@ export function CRUD_HTTP(config) {
     
             switch(action) {
     
-                case 'CREATE': case 'post':    result.response = await http.post(location, input);             break;
-                case 'READ':   case 'get':     result.response = await http.get(location + params(input));     break;
-                case 'UPDATE': case 'put':     result.response = await http.put(location, input);              break;
-                case 'DELETE': case 'delete':  result.response = await http.delete(location, { data: input }); break;
-                               case 'path':    result.response = await http.patch(location, input);            break;
-                               case 'head':    result.response = await http.head(location + params(input));    break;
-                               case 'options': result.response = await http.options(location + params(input)); break;
+                case 'CREATE': case 'post':    result.response = await http.post(location, input, config);                break;
+                case 'READ':   case 'get':     result.response = await http.get(location + params(input), config);        break;
+                case 'UPDATE': case 'put':     result.response = await http.put(location, input, config);                 break;
+                case 'DELETE': case 'delete':  result.response = await http.delete(location, { ...config, data: input }); break;
+                               case 'path':    result.response = await http.patch(location, input, config);               break;
+                               case 'head':    result.response = await http.head(location + params(input), config);       break;
+                               case 'options': result.response = await http.options(location + params(input), config);    break;
         
                 default: console.error('The CRUD function only accepts actions: CREATE, READ, UPDATE, DELETE, post, get, put, path, delete, head or options');
                 

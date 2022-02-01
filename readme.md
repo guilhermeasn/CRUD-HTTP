@@ -87,12 +87,13 @@ import CRUD from 'crud-http';
 ### CRUD parameters
 
 ```
-CRUD( action: string, path: Array<string|numeric>, data: object ): Promise<object>
+CRUD( action: string, path: Array<string|numeric>, data: object, config: object ): Promise<object>
 ```
 
 - **action**: a *string* with an http verb (```'get'```, ```'post'```, ```'put'```, ```' path'```, ```'delete'```, ```'head'``` or ```'options'```) or with an alias (```'CREATE'``` alias *post*, ```'READ'``` alias *get*, ```'UPDATE'``` alias *put* , ```'DELETE'``` alias *delete*), this data is *case sensitive*.
  - **path**: an *array* with the rest of the *api* path, for example ```[ 'user', 3, 'comment', 1 ]```.
  - **data**: an *object* with the data to be transmitted to the *api* during the request.
+ - **config**: an *object* with settings. See possible settings in [Axios Request Config](https://axios-http.com/docs/req_config).
 
 ### CRUD return
 
