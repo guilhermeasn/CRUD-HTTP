@@ -118,7 +118,7 @@ CRUD é assincrono, após o processamento, retorna um objeto contendo as seguint
 
  - **message**: se houver uma chave ```message``` *string*.
  - **error**: se houver uma chave ```error``` *string*.
- - **errors**: se houver uma chave ```errors``` *string*.
+ - **errors**: se houver uma chave ```errors``` *object*.
  - **dataset**: se houver uma chave ```dataset``` *array*.
  - **data**: forma um *object* com as demais chaves.
  

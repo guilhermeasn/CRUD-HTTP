@@ -119,7 +119,7 @@ If the response data is an *array* it will be returned in ```dataset```, if it i
 
  - **message**: if there is a key ```message``` *string*.
  - **error**: if there is a key ```error``` *string*.
- - **errors**: if there is a key ```errors``` *string*.
+ - **errors**: if there is a key ```errors``` *object*.
  - **dataset**: if there is a key ```dataset``` *array*.
  - **data**: forms an *object* with the other keys.
  
