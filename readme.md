@@ -72,6 +72,8 @@ export const CRUD = initialize({
 
 **crud-http** uses an instance of the ```axios``` package. The settings options are the same. See possible settings in [Axios Request Config](https://axios-http.com/docs/req_config).
 
+If you need your settings to be reset on each request, pass as a parameter a *callback* returning the configuration *object*.
+
 Now just import the CRUD from your configuration file:
 
 ```
