@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 
-export function CRUD_HTTP(config) {
+export function CRUD_HTTP(root_config) {
 
-    const http = axios.create(config);
+    return async (action, path = [], input = {}, config = {}) => {
 
-    const CRUD = async (action, path = [], input = {}, config = {}) => {
+        const http = axios.create((typeof root_config === 'function') ? root_config() : root_config);
 
         const location = path.join('/');
         const params   = input => input ? '?' + new URLSearchParams(input).toString() : '';
@@ -88,7 +88,5 @@ export function CRUD_HTTP(config) {
         return result;
     
     }
-
-    return CRUD;
 
 }

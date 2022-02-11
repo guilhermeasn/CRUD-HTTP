@@ -11,7 +11,11 @@ export interface CrudHttpResult {
     data:     object;
     response: any;
 
-} 
+}
+
+export interface CrudHttpCallbackConfig {
+    () : AxiosRequestConfig<object>;
+}
 
 declare function CRUD(
     action: string,
@@ -22,4 +26,4 @@ declare function CRUD(
 
 export default CRUD;
 
-export function initialize(config?: AxiosRequestConfig<object>) : typeof CRUD;
+export function initialize(root_config?: AxiosRequestConfig<object> | CrudHttpCallbackConfig) : typeof CRUD;
