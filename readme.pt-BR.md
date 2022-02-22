@@ -45,6 +45,16 @@ CRUD('READ', [
 });
 ```
 
+- Usando com ```callback```:
+
+```
+CRUD('READ', [
+    'api', 'user', 3
+], {}, {}, ( { success, data } ) => {
+    // your code here
+});
+```
+
 ## 🚀 Instalação
 
 Execute no terminal o comando abaixo para instalar o **crud-http** no seu projeto
@@ -74,6 +84,8 @@ O **crud-http** utiliza uma instância do pacote ```axios```. As opções de con
 
 Caso precise que suas configurações sejam resetadas em cada requisição, passe como parametro um *callback* retornando o *object* de configuração.
 
+Se você quiser executar uma função sempre que uma solicitação for concluída, envie um *callback*  no segundo parâmetro.
+
 Agora basta importar o CRUD do seu arquivo de configuração:
 ```
 import { CRUD } from './config';
@@ -88,13 +100,14 @@ import CRUD from 'crud-http';
 ### Parâmetros de CRUD
 
 ```
-CRUD( action: string, path: Array<string|numeric>, data: object, config: object ): Promise<object>
+CRUD( action: string, path: Array<string|numeric>, data: object, config: object, callback: function ): Promise<object>
 ```
 
  - **action**: uma *string* com um verbo http (```'get'```, ```'post'```, ```'put'```, ```'path'```, ```'delete'```, ```'head'``` ou ```'options'```) ou com um alias (```'CREATE'``` alias de *post*, ```'READ'``` alias de *get*, ```'UPDATE'``` alias de *put*, ```'DELETE'``` alias de *delete*), esse dado é *case sensitive*.
  - **path**: um *array* com o restante do caminho da *api*, por exemplo ```[ 'user', 3, 'comment', 1 ]```.
  - **data**: um *object* com os dados a serem transmitidas para a *api* durante a requisição.
  - **config**: um *object* com configurações. Veja as configurações possíveis em [Axios Request Config](https://axios-http.com/docs/req_config).
+ - **callback**: função a ser executada com o resultado da requisição.
 
 ### Retorno de CRUD
 

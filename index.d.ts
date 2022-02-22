@@ -20,10 +20,11 @@ export interface CrudHttpCallbackConfig {
 declare function CRUD(
     action: string,
     path:   Array<string | number>,
-    data:   object,
-    config: AxiosRequestConfig<object>
+    data?:   object,
+    config?: AxiosRequestConfig<object>,
+    callback?: (result: object) => {}
 ) : Promise<CrudHttpResult>;
 
 export default CRUD;
 
-export function initialize(root_config?: AxiosRequestConfig<object> | CrudHttpCallbackConfig) : typeof CRUD;
+export function initialize(root_config?: AxiosRequestConfig<object> | CrudHttpCallbackConfig, root_callback?: (result: object) => {}) : typeof CRUD;

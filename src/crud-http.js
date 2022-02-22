@@ -1,9 +1,14 @@
 import axios from 'axios';
 
+/**
+ * CRUD-HTTP
+ * 
+ * @see https://github.com/guilhermeasn/CRUD-HTTP#readme
+ * @author Guilherme Neves <guilhermeasn@yahoo.com.br>
+ */
+export function CRUD_HTTP(root_config, root_callback = result => {}) {
 
-export function CRUD_HTTP(root_config) {
-
-    return async (action, path = [], input = {}, config = {}) => {
+    return async (action, path = [], input = {}, config = {}, callback = result => {}) => {
 
         const http = axios.create((typeof root_config === 'function') ? root_config() : root_config);
 
@@ -85,6 +90,9 @@ export function CRUD_HTTP(root_config) {
             
         }
     
+        if(typeof root_callback === 'function') root_callback(result);
+        if(typeof callback === 'function') callback(result);
+
         return result;
     
     }
