@@ -6,7 +6,7 @@ import axios from 'axios';
  * @see https://github.com/guilhermeasn/CRUD-HTTP#readme
  * @author Guilherme Neves <guilhermeasn@yahoo.com.br>
  */
-export function CRUD_HTTP(root_config, root_callback = result => {}) {
+export function CRUD_HTTP(root_config, root_callback = (result, action) => {}) {
 
     return async (action, path = [], input = {}, config = {}, callback = result => {}) => {
 
@@ -90,7 +90,7 @@ export function CRUD_HTTP(root_config, root_callback = result => {}) {
             
         }
     
-        if(typeof root_callback === 'function') root_callback(result);
+        if(typeof root_callback === 'function') root_callback(result, action);
         if(typeof callback === 'function') callback(result);
 
         return result;
