@@ -27,4 +27,4 @@ declare function CRUD(
 
 export default CRUD;
 
-export function initialize(root_config?: AxiosRequestConfig<object> | CrudHttpCallbackConfig, root_callback?: (result: object) => {}) : typeof CRUD;
+export function initialize(root_config?: AxiosRequestConfig<object> | CrudHttpCallbackConfig, root_callback?: (result: object, action: string) => {}) : typeof CRUD;
