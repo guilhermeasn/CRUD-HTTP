@@ -1,6 +1,6 @@
 {
   "name": "crud-http",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "description": "Package to make requests to an API via HTTP with the CRUD paradigm (create, read, update, delete). Generating a clean and organized source code.",
   "main": "src/index.js",
   "scripts": {
@@ -18,5 +18,8 @@
   "homepage": "https://github.com/guilhermeasn/CRUD-HTTP#readme",
   "dependencies": {
     "axios": "^0.25.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11"
   }
 }
