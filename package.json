@@ -1,10 +1,9 @@
 {
   "name": "crud-http",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Package to make requests to an API via HTTP with the CRUD paradigm (create, read, update, delete). Generating a clean and organized source code.",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "build": "babel src --out-dir dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,10 +20,6 @@
     "axios": "^0.25.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.9",
-    "@babel/plugin-transform-runtime": "^7.17.0",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/runtime": "^7.17.9"
+    "@babel/preset-env": "^7.16.11"
   }
 }
